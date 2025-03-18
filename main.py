@@ -46,66 +46,83 @@ def affichage():
             print(Fore.MAGENTA + "\n▶ Vous avez choisi le thème : Energies !\n\n" + Style.RESET_ALL)
 
             print(Fore.CYAN + """1.  Pression
-32.  Equation des gaz parfaits
-33.  Premier principe de la thermodynamique\n
-34.  Energie totale
-35.  Energie cinétique
-36.  Energie potentielle\n
-37.  Travail et énergie interne
-38.  Puissance mécanique et énergétique
-39.  Rendement énergétique\n
-310. Capacité thermique et variation d’énergie interne
-311. Conversion calorie ↔ Joule
-312. Flux thermique
-313. Résistance thermique
-314. Modèle de la loi de Newton\n
-3'Tapez "exit" pour quitter'
-3""")
-
+2.  Equation des gaz parfaits
+3.  Premier principe de la thermodynamique\n
+4.  Energie totale
+5.  Energie cinétique
+6.  Energie potentielle\n
+7.  Travail et énergie interne
+8.  Puissance mécanique et énergétique
+9.  Rendement énergétique\n
+10. Capacité thermique et variation d’énergie interne
+11. Conversion calorie ↔ Joule
+12. Flux thermique
+13. Résistance thermique
+14. Modèle de la loi de Newton\n
+'Tapez "exit" pour quitter'
+""")
             sous_choix = input(Fore.BLUE + "\nChoisissez une formule : " + Style.RESET_ALL)
-            try:
-                if sous_choix == "1":
-                    pression()
-                elif sous_choix == "2":
-                    gaz_parfait()
-                elif sous_choix == "3":
-                    premier_principe_thermo()
-                elif sous_choix == "4":
-                    energie_totale()
-                elif sous_choix == "5":  # Ajout des guillemets
-                    energie_cinetique()
-                elif sous_choix == "6":  # Ajout des guillemets
-                    energie_potentielle()
-                elif sous_choix == "7":
-                    variation_energie_interne()
-                elif sous_choix == "8":
-                    puissance()
-                elif sous_choix == "9":
-                    rendement()
-                elif sous_choix == "10":
-                    variation_energie_capacite()
-                elif sous_choix == "11":
-                    conversion_cal_joule()
-                elif sous_choix == "12":
-                    flux_thermique()
-                elif sous_choix == "13":
-                    resistance_thermique()
-                elif sous_choix == "14":  # Correction du "!"" en ":"
-                    modele_Newton()
-                elif sous_choix.lower() == "exit":
+
+            match sous_choix.lower():
+                case "1": pression()
+                case "2": gaz_parfait()
+                case "3": premier_principe_thermo()
+                case "4": energie_totale()
+                case "5": energie_cinetique()
+                case "6": energie_potentielle()
+                case "7": variation_energie_interne()
+                case "8": puissance()
+                case "9": rendement()
+                case "10": variation_energie_capacite()
+                case "11": conversion_cal_joule()
+                case "12": flux_thermique()
+                case "13": resistance_thermique()
+                case "14": modele_Newton()
+                case "exit":
                     print(Fore.RED + "\nÀ Bientôt 👍\n" + Style.RESET_ALL)
-                else:
+                    break
+                case _:
                     print(Fore.RED + "❌ Option invalide, retour au menu principal.\n" + Style.RESET_ALL)
-                break
-            except:pass
-
-
+                    break
+            ()
 
         elif choix == "4" : 
             print(Fore.MAGENTA + "\n▶ Vous avez choisi le thème : Ondes et signaux !" + Style.RESET_ALL)
 
+            print(Fore.CYAN + """
+1. Intensité sonore
+2. Niveau d'intensité sonore
+3. Atténuation géométrique
+4. Atténuation par absorption
+5. Effet Doppler\n
+6. Diffraction
+7. Taille de la tâche centrale\n
 
+8. Lentille convergente
+9. Lunette astronomique 
+10. Condition pour un grossissement supérieur à 1       
+""")
 
+            sous_choix = input(Fore.BLUE + "\nChoisissez une formule : " + Style.RESET_ALL)
+            match sous_choix.lower():
+                case "1": intensite_sonore()
+                case "2": niv_intensite_sonore()
+                case "3": attenuation_geometrique()
+                case "4": attenuation_absorption()
+                case "5": effet_doppler()
+                case "6": diffraction()
+                case "7": tache_centrale()
+        
+                # AJOUT DES AUTRES MENUS 
+
+                case "exit":
+                    print(Fore.RED + "\nÀ Bientôt 👍\n" + Style.RESET_ALL)
+                    break
+                case _:
+                    print(Fore.RED + "❌ Option invalide, retour au menu principal.\n" + Style.RESET_ALL)
+                    break
+            ()
+            
         elif choix == "maths":
             print(Fore.MAGENTA + "\n▶ Vous avez choisi le thème : Théorèmes mathématiques !\n\n" + Style.RESET_ALL)
 

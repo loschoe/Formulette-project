@@ -1,3 +1,5 @@
+import math
+
 # Thème 3 Energies : 
 def pression():
     """
@@ -379,9 +381,223 @@ def premier_principe_thermo():
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
 
-# Thème maths : 
-import math
+# Thème 4 Ondes et signaux : 
+def intensite_sonore():
+    """
+    Calcul de l'intensité sonore avec la puissance de la source P (W), la surface de propagation S (m²)
+    Formule : I = P / S 
 
+    Entrées : 
+    - P (float) : Puissance de la source en watt (W)
+    - S (float) : Surface de propagation en mètre carré (m²)
+
+    Sortie : 
+    - Affiche l'intensité sonore I (W.m⁻²)
+    """
+    try:
+        P = float((input("Puissance de la source sonore (W) : ")))
+        S = float((input("Surface de propagation (m²) : ")))
+    
+        assert P >= 0, "Erreur : la puissance ne peut pas être négative"
+        assert S > 0, "Erreur : la surface de propagation doit être stricement positive"
+
+        I = P / S
+
+        print("I = P / S")
+        print(f"L'intenisté sonore est de : {I:.2f} W.m⁻²")
+
+    except ValueError:
+        print("Erreur : Veuillez entrer des nombres valides.")
+
+I0 = 1,0*10**-12 # Seuil d'audibilité 
+def niv_intensite_sonore():
+    """
+    Calcul du niveau de l'intensité sonore avec l'intensité I (W.m⁻²), le seuil d'audibilité I0 (W.m⁻²)
+    Formule : L = 10 * log(I/I0)  
+
+    Entrée : 
+    - I (float) : Intenisté sonore (W.m⁻²)
+
+    Sortie : 
+    - Affiche le niveau d'intensité sonore L (dB)
+    """
+    try:
+        I = float(input("Intensité sonore (W.m⁻²) : "))
+
+        assert I > 0, "Erreur : l'intensité doit être strictement positive."
+
+        L = 10 * math.log10(I/I0)
+
+        print("L = 10 * log(I/I0)")
+        print(f"Le niveau d'intensité sonore est de : {L:.2f} dB")
+    except ValueError:
+        print("Erreur : Veuillez entrer des nombres valides.")
+
+def attenuation_geometrique():
+    """
+    Calcul de l'atténuation gémométrique avec le niveau sonore proche Lp (dB), le niveau sonore éloigné Le (dB)
+    Formule : A = Lp - Le 
+
+    Entrée : 
+    - Lp (float) : Niveau d'intensité sonore proche Lp (dB)
+    - Le (float) : Niveau d'intensité sonore éloigné Le (dB)
+
+    Sortie : 
+    - Affiche l'atténuation géométrique A en décibels (dB)
+    """
+    try:
+        Lp = float(input("Niveau d'intensité sonore proche (dB) : "))
+        Le = float(input("Niveau d'intensité sonore éloigné (dB) : "))
+
+        assert Lp >= 0, "Erreur : Le niveau sonore proche doit être positif."
+        assert Le >= 0, "Erreur : Le niveau sonore éloigné doit être positif."
+        assert Lp >= Le, "Erreur : Le niveau sonore proche doit être supérieur ou égal au niveau sonore éloigné."
+
+        A = Lp - Le
+
+        print("A = Lp - Le")
+        print(f"l'atténuation géométrique est de : {A:.2f} dB")
+    except ValueError:
+        print("Erreur : Veuillez entrer des nombres valides.")
+    except AssertionError as e:
+        print(e)
+
+def attenuation_absorption():
+    """
+    Calcul de l'atténuation par absorption avec le niveau sonore incident Li (dB), 
+    le niveau sonore transmis Lt (dB).
+    
+    Formule : A = Li - Lt 
+
+    Entrée : 
+    - Li (float) : Niveau d'intensité sonore incident (dB)
+    - Lt (float) : Niveau d'intensité sonore transmis (dB)
+
+    Sortie : 
+    - Affiche l'atténuation par absorption A en décibels (dB)
+    """
+    try:
+        Li = float(input("Niveau d'intensité sonore incident (dB) : "))
+        Lt = float(input("Niveau d'intensité sonore transmis (dB) : "))
+
+        assert Li >= 0, "Erreur : Le niveau sonore incident doit être positif."
+        assert Lt >= 0, "Erreur : Le niveau sonore transmis doit être positif."
+        assert Li >= Lt, "Erreur : Le niveau sonore incident doit être supérieur ou égal au niveau sonore transmis."
+
+        A = Li - Lt
+
+        print("A = Li - Lt")
+        print(f"L'atténuation par absorption est de : {A:.2f} dB")
+    except ValueError:
+        print("Erreur : Veuillez entrer des nombres valides.")
+    except AssertionError as e:
+        print(e)
+
+def effet_doppler():
+    """
+    Calcul de la fréquence reçue avec l'effet Doppler, pour un observateur fixe et un émetteur mobile.
+
+    Formule : 
+    - Si la source se rapproche : f_R = f_E * (v / (v - v_S))
+    - Si la source s'éloigne   : f_R = f_E * (v / (v + v_S))
+
+    Entrée :
+    - f_E (float) : Fréquence émise (Hz)
+    - v (float) : Vitesse du son dans le milieu (m/s)
+    - v_S (float) : Vitesse de la source sonore (m/s)
+    - direction (str) : "rapproche" ou "eloigne"
+
+    Sortie :
+    - Affiche la fréquence reçue f_R (Hz)
+    """
+    try:
+        f_E = float(input("Fréquence émise (Hz) : "))
+        v = float(input("Vitesse du son dans le milieu (m/s) : "))
+        v_S = float(input("Vitesse de la source sonore (m/s) : "))
+        direction = input("La source se rapproche ou s'éloigne ? (rapproche/eloigne) : ").strip().lower()
+
+        assert f_E > 0, "Erreur : La fréquence émise doit être strictement positive."
+        assert v > 0, "Erreur : La vitesse du son doit être strictement positive."
+        assert 0 <= v_S < v, "Erreur : La vitesse de la source doit être positive et inférieure à la vitesse du son."
+        assert direction in ["rapproche", "eloigne"], "Erreur : Veuillez entrer 'rapproche' ou 'eloigne'."
+
+        if direction == "rapproche":
+            f_R = f_E * (v / (v - v_S))
+        else:  # direction == "eloigne"
+            f_R = f_E * (v / (v + v_S))
+
+        print("f_R = f_E * (v / (v ± v_S))")
+        print(f"La fréquence reçue est de : {f_R:.2f} Hz")
+
+    except ValueError:
+        print("Erreur : Veuillez entrer des nombres valides.")
+    except AssertionError as e:
+        print(e)
+
+def diffraction():
+    """
+    Calcul de l'angle de diffraction avec la longueur d'onde λ (m) et la largeur de l'ouverture a (m)
+    Formule : θ ≈ λ / a
+
+    Entrée : 
+    - λ (float) : longueur d'onde λ (m)
+    - a (float) : largeur de l'ouverture a (m)
+
+    Sortie : 
+    - Affiche le demi-angle de diffraction θ en radian (rad)
+    """
+    try:
+        λ = float(input("Longueur d'onde λ (m) : "))
+        a = float(input("Largeur de l'ouverture a (m) : "))
+
+        assert λ > 0, "Erreur : La longueur d'onde doit être strictement positive."
+        assert a > 0, "Erreur : La largeur de l'ouverture doit être strictement positive."
+
+        θ = λ / a
+
+        print("θ ≈ λ / a")
+        print(f"Le demi-angle de diffraction est de : {θ:.2e} rad")
+
+    except ValueError:
+        print("Erreur : Veuillez entrer des nombres valides.")
+    except AssertionError as e:
+        print(e)
+
+def tache_centrale():
+    """
+    Calcul de la largeur de la tache centrale en diffraction.
+
+    Formule : L = 2 * λ * D / a
+
+    Entrées : 
+    - λ (float) : longueur d'onde (m)
+    - a (float) : largeur de l'ouverture (m)
+    - D (float) : distance ouverture-écran (m)
+
+    Sortie : 
+    - Affiche la largeur de la tache centrale L (m)
+    """
+    try:
+        λ = float(input("Longueur d'onde λ (m) : "))
+        a = float(input("Largeur de l'ouverture a (m) : "))
+        D = float(input("Distance ouverture-écran D (m) : "))
+
+        assert λ > 0, "Erreur : La longueur d'onde doit être strictement positive."
+        assert a > 0, "Erreur : La largeur de l'ouverture doit être strictement positive."
+        assert D > 0, "Erreur : La distance ouverture-écran doit être strictement positive."
+
+        L = (2 * λ * D) / a
+
+        print("\nRésultat :")
+        print("L = 2 * λ * D / a")
+        print(f"La largeur de la tache centrale est de : {L:.2e} m")
+
+    except ValueError:
+        print("Erreur : Veuillez entrer des nombres valides.")
+    except AssertionError as e:
+        print(e)
+
+# Thème maths : 
 def pythagore():
     """
     Applique le théorème de Pythagore pour calculer un côté ou l'hypoténuse.
