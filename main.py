@@ -45,57 +45,59 @@ def affichage():
         elif choix == "3":
             print(Fore.MAGENTA + "\n▶ Vous avez choisi le thème : Energies !\n\n" + Style.RESET_ALL)
 
-            print(Fore.CYAN + "1.  Pression")
-            print("2.  Equation des gaz parfaits")
-            print("3.  Premier principe de la thermodynamique\n")
-            print("4.  Energie totale")
-            print("5.  Energie cinétique")
-            print("6.  Energie potentielle\n")
-            print("7.  Travail et énergie interne")
-            print("8.  Puissance mécanique et énergétique")
-            print("9.  Rendement énergétique\n")
-            print("10. Capacité thermique et variation d’énergie interne")
-            print("11. Conversion calorie ↔ Joule")
-            print("12. Flux thermique")
-            print("13. Résistance thermique")
-            print("14. Modèle de la loi de Newton")
-            print('Tapez "exit" pour quitter')
+            print(Fore.CYAN + """1.  Pression
+32.  Equation des gaz parfaits
+33.  Premier principe de la thermodynamique\n
+34.  Energie totale
+35.  Energie cinétique
+36.  Energie potentielle\n
+37.  Travail et énergie interne
+38.  Puissance mécanique et énergétique
+39.  Rendement énergétique\n
+310. Capacité thermique et variation d’énergie interne
+311. Conversion calorie ↔ Joule
+312. Flux thermique
+313. Résistance thermique
+314. Modèle de la loi de Newton\n
+3'Tapez "exit" pour quitter'
+3""")
 
             sous_choix = input(Fore.BLUE + "\nChoisissez une formule : " + Style.RESET_ALL)
-
-            if sous_choix == "1":
-                pression()
-            elif sous_choix == "2":
-                gaz_parfait()
-            elif sous_choix == "3":
-                premier_principe_thermo()
-            elif sous_choix == "4":
-                energie_totale()
-            elif sous_choix == "5":  # Ajout des guillemets
-                energie_cinetique()
-            elif sous_choix == "6":  # Ajout des guillemets
-                energie_potentielle()
-            elif sous_choix == "7":
-                variation_energie_interne()
-            elif sous_choix == "8":
-                puissance()
-            elif sous_choix == "9":
-                rendement()
-            elif sous_choix == "10":
-                variation_energie_capacite()
-            elif sous_choix == "11":
-                conversion_cal_joule()
-            elif sous_choix == "12":
-                flux_thermique()
-            elif sous_choix == "13":
-                resistance_thermique()
-            elif sous_choix == "14":  # Correction du "!"" en ":"
-                modele_Newton()
-            elif sous_choix.lower() == "exit":  # Normalisation de la casse
-                print(Fore.RED + "\nÀ Bientôt 👍\n" + Style.RESET_ALL)
-            else:
-                print(Fore.RED + "❌ Option invalide, retour au menu principal.\n" + Style.RESET_ALL)
-            break
+            try:
+                if sous_choix == "1":
+                    pression()
+                elif sous_choix == "2":
+                    gaz_parfait()
+                elif sous_choix == "3":
+                    premier_principe_thermo()
+                elif sous_choix == "4":
+                    energie_totale()
+                elif sous_choix == "5":  # Ajout des guillemets
+                    energie_cinetique()
+                elif sous_choix == "6":  # Ajout des guillemets
+                    energie_potentielle()
+                elif sous_choix == "7":
+                    variation_energie_interne()
+                elif sous_choix == "8":
+                    puissance()
+                elif sous_choix == "9":
+                    rendement()
+                elif sous_choix == "10":
+                    variation_energie_capacite()
+                elif sous_choix == "11":
+                    conversion_cal_joule()
+                elif sous_choix == "12":
+                    flux_thermique()
+                elif sous_choix == "13":
+                    resistance_thermique()
+                elif sous_choix == "14":  # Correction du "!"" en ":"
+                    modele_Newton()
+                elif sous_choix.lower() == "exit":
+                    print(Fore.RED + "\nÀ Bientôt 👍\n" + Style.RESET_ALL)
+                else:
+                    print(Fore.RED + "❌ Option invalide, retour au menu principal.\n" + Style.RESET_ALL)
+                break
+            except:pass
 
 
 

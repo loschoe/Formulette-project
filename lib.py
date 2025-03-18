@@ -321,7 +321,7 @@ def energie_cinetique():
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
 
-g = 9.81  # Intensité de pesanteur en m/s² sur Terre
+G = 9.81  # Intensité de pesanteur en m/s² sur Terre
 def energie_potentielle():
     """
     Calcul de l'énergie potentielle gravitationnelle d'un objet avec sa masse m (kg), sa hauteur h (m)
@@ -344,7 +344,7 @@ def energie_potentielle():
         assert m > 0, "Erreur : La masse doit être strictement positive."
         assert h >= 0, "Erreur : La hauteur ne peut pas être négative."
 
-        Ep = m * g * h
+        Ep = m * G * h
 
         print("Ep = m × g × h")
         print(f"L'énergie potentielle de l'objet est de : {Ep:.2f} J")
@@ -378,9 +378,6 @@ def premier_principe_thermo():
 
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
-
-
-
 
 # Thème maths : 
 import math
@@ -459,4 +456,3 @@ def thales():
 
     except Exception as e:
         print(f"Erreur : {e}")
-
