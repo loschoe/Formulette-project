@@ -26,13 +26,13 @@ Exécutez le fichier `main.py`
 **2. Suivre les indications du menu en entrant les valeurs pour se balader dans les rubriques**
 
 ## Structure du projet
-📂 Formulette
- ├── 📄 main.py      # Interface principale et navigation utilisateur
- ├── 📄 lib.py       # Fonctions de calculs physiques et chimiques
- ├── 📄 README.md    # Documentation du projet
+📂 Formulette<br>
+ ├── 📄 main.py      # Interface principale et navigation utilisateure<br>
+ ├── 📄 lib.py       # Fonctions de calculs physiques et chimiquese<br>
+ ├── 📄 README.md    # Documentation du projete<br>
 
-📜 Licence
-📌 Projet open-source - Utilisable librement.
-💡 Contributions bienvenues !
+📜 Licencee<br>
+📌 Projet open-source - Utilisable librement.e<br>
+💡 Contributions bienvenues !e<br>
 
 
