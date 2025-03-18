@@ -32,7 +32,7 @@ Exécutez le fichier `main.py`
  ├── 📄 README.md    # Documentation du projete<br>
 
 📜 Licencee<br>
-📌 Projet open-source - Utilisable librement.e<br>
-💡 Contributions bienvenues !e<br>
+📌 Projet open-source - Utilisable librement<br>
+💡 Contributions bienvenues !<br>
 
 
