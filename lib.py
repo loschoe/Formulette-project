@@ -1,6 +1,78 @@
 import math
+from mendeleev import element
+import re
 
-# Thème 3 Energies : 
+# Thème 1 : CONSTITUTION ET TRANSFORMATION DE LA MATIÈRE
+# La formule de la pression est déjà codée !
+def calcul_reciproque_H30():
+    """
+    Calcule la cencentration en ions oxonium [H30+] à partir du pH.
+    Formule : [H3O+] = 10^(-pH)
+    
+    Entrées :
+    - pH : Potentiel hydrogène (sans unité)
+    Sortie : 
+    - [H3O+] : Concentration en mol/L
+    """
+    pH = float((input("Entrer le pH : ")))
+    assert pH >= 0, "le pH est positif ou nul"
+
+    H3O = 10 ** (-pH)
+    print("Voici le calcul : [H3O+] = 10^(-pH)")
+    print(f"[H3O+] = {H3O:.5e} mol/L")
+
+def masse_molaire():
+    """
+    Calcule la masse molaire d'une molécule.
+    
+    Entrée :
+    - molécule : Formule chimique de la molécule (ex. H2O)
+    Sortie :
+    - masse molaire en g/mol
+    """
+    molecule = input("Entrez la formule de la molécule : ").strip()
+    pattern = r'([A-Z][a-z]*)(\d*)'
+    matches = re.findall(pattern, molecule)
+    
+    molar_mass = 0.0
+    
+    for (el, count) in matches:
+        elem = element(el)
+        
+        if elem is None:
+            raise ValueError(f"L'élément '{el}' n'existe pas dans le tableau périodique.")
+        
+        mass = elem.mass
+        
+        count = int(count) if count else 1
+        molar_mass += mass * count
+    
+    assert molar_mass > 0, "La masse molaire doit être strictement positive."
+    
+    return molar_mass
+
+def calcul_quantite_matiere():
+    """
+    Calcule la quantité de matière (n) en fonction de la masse et de la masse molaire.
+    Formule : n = m / M
+    """
+    try:
+        masse = float(input("Entrer la masse (g) : "))
+        molar_mass = masse_molaire()
+        
+        if molar_mass <= 0:
+            raise ValueError("Erreur de calcul : la masse molaire est invalide.")
+        
+        quantite_matiere = masse / molar_mass
+        print(f"La quantité de matière est de {quantite_matiere:.5f} mol.")
+    
+    except ValueError as e:
+        print(f"Erreur : {e}")
+
+
+# Thème 2 : MOUVEMENT ET INTERACTION 
+
+# Thème 3 : ENERGIES 
 def pression():
     """
     Calcule la pression en fonction de la force et de la surface.
@@ -381,7 +453,7 @@ def premier_principe_thermo():
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
 
-# Thème 4 Ondes et signaux : 
+# Thème 4 ONDES ET SIGNAUX : 
 def intensite_sonore():
     """
     Calcul de l'intensité sonore avec la puissance de la source P (W), la surface de propagation S (m²)
@@ -597,7 +669,9 @@ def tache_centrale():
     except AssertionError as e:
         print(e)
 
-# Thème maths : 
+# Thème 5 ÉLÉCTRICITÉ 
+
+# Thème MATHS : 
 def pythagore():
     """
     Applique le théorème de Pythagore pour calculer un côté ou l'hypoténuse.
