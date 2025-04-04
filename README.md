@@ -10,6 +10,24 @@ Ce projet est un programme **Python** permettant d'effectuer tous les calculs en
 - 📂 Le fichier `main.py` est à exécuter et contient l'interface de navigation de l'utilisateur et les appels des fonctions de calcul.
 - ⚙️ Le fichier `lib.py` contient toutes les fonctions qui seront appelées pour effectuer les différents calculs.
 
+**Attention toutes les formules ne sont pas encore codées et sont en cours de développement**
+Voici les manquantes : 
+Les fonctions manquantes : 
+- Thème 1 : 
+    - Calcul du pH
+    - Concentration molaire 
+
+- Thème 2 :
+**Il est vide pour l'instant**
+
+- Thème 4 : 
+    - Lentille convergente
+    - Lunette astronomique
+    - Condition pour un grossissement supérieur à 1
+
+- Thème 5 :
+**Il est vide pour l'instant**
+  
 ## Prérequis
 
 Vous devez avoir **Python 3.x** installé sur votre système.  
