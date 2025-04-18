@@ -13,13 +13,10 @@ Ce projet est un programme **Python** permettant d'effectuer tous les calculs en
 **Attention toutes les formules ne sont pas encore codées et sont en cours de développement**
 Voici les manquantes : 
 Les fonctions manquantes : 
-- Thème 1 : 
-    - Calcul du pH
-    - Concentration molaire 
-
+- Thème 1 : Oppérationnel 
 - Thème 2 :
 **Il est vide pour l'instant**
-
+- Thème 3 : Oppérationnel 
 - Thème 4 : 
     - Lentille convergente
     - Lunette astronomique
