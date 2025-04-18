@@ -33,18 +33,20 @@ def affichage():
             print(Fore.CYAN + """1. Pression
 2. Calcul du pH
 3. Calcul de la réciproque [𝐻3𝑂+]
-4. Quantité de matière 
-5. Concentration molaire
+4. Quantité de matière
+5. Quantité de matière avec un volume  
+6. Concentration molaire
                    
 'Tapez "exit" pour quitter'
 """)
-            sous_choix = input(Fore.BLUE + "Choisissez une formule : " + Style.RESET_ALL)
+            sous_choix = input(Fore.BLUE + "\nChoisissez une formule : " + Style.RESET_ALL)
             match sous_choix.lower():
                 case"1": pression()
-                #case"2": # à faire  
+                case"2": calcul_ph() 
                 case"3": calcul_reciproque_H30()
                 case"4": calcul_quantite_matiere()
-                #case"5": # à faire 
+                case "5": quantite_matiere_volume()
+                case"6": concentration_molaire()
                 case "exit":
                     print(Fore.RED + "\nÀ Bientôt 👍\n" + Style.RESET_ALL)
                     break
@@ -54,12 +56,23 @@ def affichage():
             ()
 
 # ============================================= THEME 2 ================================================     
-
         elif choix == "2" :
             print(Fore.MAGENTA + "\n▶ Vous avez choisi le thème : Mouvement et interaction !" + Style.RESET_ALL)
 
-# ============================================= THEME 3 ================================================
+            print(Fore.CYAN + "2e loi de Newton\n Tapez 'exit' pour quitter")
 
+            sous_choix = input(Fore.BLUE + "\nChoisissez une formule : " + Style.RESET_ALL)
+            match sous_choix.lower():
+                case "1": IIeNewton()
+                case "exit":
+                    print(Fore.RED + "\nÀ Bientôt 👍\n" + Style.RESET_ALL)
+                    break
+                case _:
+                    print(Fore.RED + "❌ Option invalide, retour au menu principal.\n" + Style.RESET_ALL)
+                    break
+            ()
+
+# ============================================= THEME 3 ================================================
         elif choix == "3":
             print(Fore.MAGENTA + "\n▶ Vous avez choisi le thème : Énergies !\n\n" + Style.RESET_ALL)
 
@@ -105,7 +118,6 @@ def affichage():
             ()
 
 # ============================================= THEME 4 ================================================
-
         elif choix == "4" : 
             print(Fore.MAGENTA + "\n▶ Vous avez choisi le thème : Ondes et signaux !" + Style.RESET_ALL)
 
@@ -146,26 +158,45 @@ def affichage():
             ()
 
 # ============================================= THEME 5 ================================================
+        elif choix == "5":
+            print(Fore.MAGENTA + "\n▶ Vous avez choisi le thème : Notions d'électricité !" + Style.RESET_ALL)
 
-        elif choix == "5" : 
-                    print(Fore.MAGENTA + "\n▶ Vous avez choisi le thème : Notions d'électricité !" + Style.RESET_ALL)
-
-                    print(Fore.CYAN + """1. Loi d'Ohm
+            print(Fore.CYAN + """1. Loi d'Ohm
 2. Puissance électrique
 3. Énergie électrique 
-4. Association de resistance 
+4. Association de résistance 
 5. Loi des nœuds et des mailles (Loi de Kirchhoff)
-6. Condensateurs et bobines\n
+6. Condensateurs et bobines
+                  
 'Tapez "exit" pour quitter'        
 """)
+            sous_choix = input(Fore.BLUE + "\nChoisissez une formule : " + Style.RESET_ALL)
+
+            match sous_choix.lower():
+                case "1":
+                    pass  # ohm()
+                case "2":
+                    pass  # puissance_electrique()
+                case "3":
+                    pass  # energie_electrique()
+                case "4":
+                    pass  # association_resistance()
+                case "5":
+                    pass  # Kirchhoff()
+                case "6":
+                    pass  # condensateurs()
+                case "exit":
+                    print(Fore.RED + "\nÀ Bientôt 👍\n" + Style.RESET_ALL)
+                    break
+                case _:
+                    print(Fore.RED + "❌ Option invalide, retour au menu principal.\n" + Style.RESET_ALL)
 
 # ============================================= THEME maths ================================================
-
         elif choix == "maths":
             print(Fore.MAGENTA + "\n▶ Vous avez choisi le thème : Théorèmes mathématiques !\n\n" + Style.RESET_ALL)
 
-            print(Fore.CYAN + "1. Pythagor")
-            print("2. Thalèse")
+            print(Fore.CYAN + "1. Pythagore")
+            print("2. Thalès")
 
             sous_choix = input(Fore.BLUE + "\nChoisissez une formule : " + Style.RESET_ALL)
 
@@ -175,14 +206,15 @@ def affichage():
                 thales()
             elif sous_choix.lower() == "exit":  # Normalisation de la casse
                 print(Fore.RED + "\nÀ Bientôt 👍\n" + Style.RESET_ALL)
+                break
             else:
                 print(Fore.RED + "❌ Option invalide, retour au menu principal.\n" + Style.RESET_ALL)
+
+        elif choix.lower() == "exit":
+            print(Fore.RED + "\nÀ Bientôt 👍\n" + Style.RESET_ALL)
             break
 
-        elif choix == "exit":
-            print(Fore.RED + "\nÀ Bientot 👍\n" + Style.RESET_ALL)
-            break
-
-        else : print(Fore.RED + "❌ Option invalide, retour au menu principale.\n" + Style.RESET_ALL)
+        else:
+            print(Fore.RED + "❌ Option invalide, retour au menu principal.\n" + Style.RESET_ALL)
 
 affichage()

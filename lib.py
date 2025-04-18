@@ -7,19 +7,37 @@ import re
 def calcul_reciproque_H30():
     """
     Calcule la cencentration en ions oxonium [H30+] à partir du pH.
-    Formule : [H3O+] = 10^(-pH)
+    Formule : [H₃O⁺] = 10^(-pH)
     
     Entrées :
     - pH : Potentiel hydrogène (sans unité)
     Sortie : 
-    - [H3O+] : Concentration en mol/L
+    - [H₃O⁺] : Concentration en mol/L
     """
     pH = float((input("Entrer le pH : ")))
     assert pH >= 0, "le pH est positif ou nul"
 
     H3O = 10 ** (-pH)
-    print("Voici le calcul : [H3O+] = 10^(-pH)")
-    print(f"[H3O+] = {H3O:.5e} mol/L")
+    print("Voici le calcul : [H₃O⁺] = 10^(-pH)")
+    print(f"\n[H₃O⁺] = {H3O:.5e} mol/L\n")
+
+def calcul_ph():
+    """
+    Calcule le pH d'une solution acide à partir de la concentration en ions H₃O⁺.
+
+    Paramètres :
+    - concentration_H3O (float) : Concentration en mol/L
+
+    Retourne :
+    - pH (float) : Potentiel hydrogène (sans unité)
+    """
+    concentration_H3O = int(input("Quelle est la concentration [H₃O⁺]"))
+    assert concentration_H3O > 0, "La concentration [H₃O⁺] doit être strictement positive."
+
+    print("Formule : pH = -log₁₀([H₃O⁺])")
+
+    ph = -math.log10(concentration_H3O)
+    print(f"\nRésultat : pH = {ph:.2f}\n")
 
 def masse_molaire():
     """
@@ -51,6 +69,27 @@ def masse_molaire():
     
     return molar_mass
 
+def concentration_molaire():
+    """
+    Calcule la concentration molaire d'une solution.
+
+    Paramètres :
+    - n (float) : Quantité de matière en mol
+    - V (float) : Volume de la solution en litres (L)
+
+    Retourne :
+    - C (float) : Concentration molaire en mol/L
+    """
+    n = int(input("La quantité de matière en mol : "))
+    V = int(input("Le volume de la solution en litre : "))
+
+    assert n >= 0, "La quantité de matière doit être positive ou nulle."
+    assert V > 0, "Le volume doit être strictement positif."
+
+    print("Formule : C = n / V")
+    C = n / V
+    print(f"\nRésultat : C = {C:.4f} mol/L\n")
+
 def calcul_quantite_matiere():
     """
     Calcule la quantité de matière (n) en fonction de la masse et de la masse molaire.
@@ -64,13 +103,48 @@ def calcul_quantite_matiere():
             raise ValueError("Erreur de calcul : la masse molaire est invalide.")
         
         quantite_matiere = masse / molar_mass
-        print(f"La quantité de matière est de {quantite_matiere:.5f} mol.")
+        print(f"\nLa quantité de matière est de {quantite_matiere:.5f} mol.\n")
     
     except ValueError as e:
         print(f"Erreur : {e}")
 
+def quantite_matiere_volume():
+    """
+    Calcule la quantité de matière à partir du volume d’un gaz.
+
+    Paramètres :
+    - V (float) : Volume du gaz en litres (L)
+    - Vm (float) : Volume molaire en L/mol (par défaut : 24.0 L/mol à 25°C)
+
+    Retourne :
+    - n (float) : Quantité de matière en moles (mol)
+    """
+    V = int(input("Le volume du gaz en litre : "))
+    Vm = int(input("Le volume molaire en L/mol : "))
+
+    assert V >= 0, "Le volume V doit être positif ou nul."
+    assert Vm > 0, "Le volume molaire Vm doit être strictement positif."
+
+    print("Quantité de matière (à partir du volume)")
+    print("Formule : n = V / Vm")
+
+    n = V / Vm
+    print(f"\nRésultat : n = {n:.4f} mol\n")
+
 
 # Thème 2 : MOUVEMENT ET INTERACTION 
+def IIeNewton():
+    """
+    Ennonce la deuxième loi de Newton mais n'éffectue pas la calcul.
+    Formule : F = m × a
+    
+    Entrées :
+    - m : masse du système en kilogramme (kg)
+    - a : accélération en m.s²  
+    Sortie : 
+    - La force F en N 
+    """
+    print ("\nÉnnonciation de la 2e loi de Newton : F = m × a\n")
 
 # Thème 3 : ENERGIES 
 def pression():
@@ -93,7 +167,7 @@ def pression():
     assert S > 0, "La surface doit être strictement positive."
 
     print("Voici le calcul : P = F / S")
-    print(f"La pression est de {P} Pa.")
+    print(f"\nLa pression est de {P} Pa.\n")
 
 R = 8.314  # Constante des gaz parfaits en J/(mol.K)
 
@@ -128,18 +202,18 @@ def gaz_parfait():
 
     if P is None:
         P = (n * R * T) / V
-        print(f"La pression est de {P} Pa.")
+        print(f"\nLa pression est de {P} Pa.\n")
     elif V is None:
         V = (n * R * T) / P
-        print(f"Le volume est de {V} m³.")
+        print(f"\nLe volume est de {V} m³.\n")
     elif n is None:
         n = (P * V) / (R * T)
-        print(f"La quantité de matière est de {n} mol.")
+        print(f"\nLa quantité de matière est de {n} mol.\n")
     elif T is None:
         T = (P * V) / (n * R)
-        print(f"La température est de {T} K.")
+        print(f"\nLa température est de {T} K.\n")
     else:
-        print("Il faut laisser une valeur vide pour la calculer.")
+        print("Il faut laisser une valeur vide pour la calculer.\n")
 
 def energie_totale():
     """
@@ -162,7 +236,7 @@ def energie_totale():
 
     Etot = Ec + Ep
 
-    print(f"L'énergie totale est de {Etot} J.")
+    print(f"\nL'énergie totale est de {Etot} J.\n")
 
 def variation_energie_interne():
     """
@@ -184,7 +258,7 @@ def variation_energie_interne():
     assert isinstance(W, (int, float)), "W doit être un nombre."    
 
     Delta_U = Q + W
-    print(f"La variation d'énergie interne est de {Delta_U} J.")
+    print(f"\nLa variation d'énergie interne est de {Delta_U} J.\n")
 
 def variation_energie_capacite():
     """
@@ -208,7 +282,7 @@ def variation_energie_capacite():
     assert Tf != Ti, "La température initiale et finale ne doivent pas être égales."
 
     Delta_U = C * (Tf - Ti)
-    print(f"La variation d'énergie interne est de {Delta_U} J.")
+    print(f"\nLa variation d'énergie interne est de {Delta_U} J.\n")
 
 def conversion_cal_joule():
     """
@@ -234,7 +308,7 @@ def conversion_cal_joule():
     elif choix == "2":
         J = float(input("Entrez l'énergie en joules : "))
         cal = J / 4.18
-        print(f"{J} J = {cal} cal")
+        print(f"\n{J} J = {cal} cal\n")
     else:
         print("Choix invalide.")
 
@@ -258,7 +332,7 @@ def flux_thermique():
 
         Φ = Q / Δt
         print("Φ = Q / Δt")
-        print(f"Le flux thermique est de : {Φ} W")  # J/s = W
+        print(f"\nLe flux thermique est de : {Φ} W\n")
 
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
@@ -286,7 +360,7 @@ def resistance_thermique():
 
     Rth = ΔT / P
     print(f"Rth = ΔT / P")
-    print(f"La résistance thermique est de : {Rth:.2f} K.W⁻¹")
+    print(f"\nLa résistance thermique est de : {Rth:.2f} K.W⁻¹\n")
 
 def modele_Newton():
     """
@@ -314,7 +388,7 @@ def modele_Newton():
     Φ = h * S * (θe - θ)
 
     print(f"Φ = h × S × (θe - θ)")
-    print(f"Le flux thermique est de : {Φ:.2f} W")
+    print(f"\nLe flux thermique est de : {Φ:.2f} W\n")
 
 def puissance():
     """
@@ -337,7 +411,7 @@ def puissance():
     P = W / t
 
     print("P = W / t")
-    print(f"La puissance mécanique et énergétique est de : {P:.2f} W")
+    print(f"\nLa puissance mécanique et énergétique est de : {P:.2f} W\n")
 
 def rendement():
     """
@@ -362,7 +436,7 @@ def rendement():
         η_pourcentage = η * 100  # Conversion en %
 
         print("η = E_utile / E_reçue")
-        print(f"Le rendement énergétique est de : {η_pourcentage:.2f} %")
+        print(f"\nLe rendement énergétique est de : {η_pourcentage:.2f} %\n")
 
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
@@ -390,7 +464,7 @@ def energie_cinetique():
         Ec = 0.5 * m * (v ** 2)
 
         print("Ec = 1/2 × m × v²")
-        print(f"L'énergie cinétique de l'objet est de : {Ec:.2f} J")
+        print(f"\nL'énergie cinétique de l'objet est de : {Ec:.2f} J\n")
 
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
@@ -421,7 +495,7 @@ def energie_potentielle():
         Ep = m * G * h
 
         print("Ep = m × g × h")
-        print(f"L'énergie potentielle de l'objet est de : {Ep:.2f} J")
+        print(f"\nL'énergie potentielle de l'objet est de : {Ep:.2f} J\n")
 
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
@@ -448,7 +522,7 @@ def premier_principe_thermo():
         ΔU = Q - W
 
         print("ΔU = Q - W")
-        print(f"La variation de l'énergie interne du système est de : {ΔU:.2f} J")
+        print(f"\nLa variation de l'énergie interne du système est de : {ΔU:.2f} J\n")
 
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
@@ -476,7 +550,7 @@ def intensite_sonore():
         I = P / S
 
         print("I = P / S")
-        print(f"L'intenisté sonore est de : {I:.2f} W.m⁻²")
+        print(f"\nL'intenisté sonore est de : {I:.2f} W.m⁻²\n")
 
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
@@ -501,7 +575,7 @@ def niv_intensite_sonore():
         L = 10 * math.log10(I/I0)
 
         print("L = 10 * log(I/I0)")
-        print(f"Le niveau d'intensité sonore est de : {L:.2f} dB")
+        print(f"\nLe niveau d'intensité sonore est de : {L:.2f} dB\n")
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
 
@@ -528,7 +602,7 @@ def attenuation_geometrique():
         A = Lp - Le
 
         print("A = Lp - Le")
-        print(f"l'atténuation géométrique est de : {A:.2f} dB")
+        print(f"\nl'atténuation géométrique est de : {A:.2f} dB\n")
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
     except AssertionError as e:
@@ -559,7 +633,7 @@ def attenuation_absorption():
         A = Li - Lt
 
         print("A = Li - Lt")
-        print(f"L'atténuation par absorption est de : {A:.2f} dB")
+        print(f"\nL'atténuation par absorption est de : {A:.2f} dB\n")
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
     except AssertionError as e:
@@ -599,7 +673,7 @@ def effet_doppler():
             f_R = f_E * (v / (v + v_S))
 
         print("f_R = f_E * (v / (v ± v_S))")
-        print(f"La fréquence reçue est de : {f_R:.2f} Hz")
+        print(f"\nLa fréquence reçue est de : {f_R:.2f} Hz\n")
 
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
@@ -628,7 +702,7 @@ def diffraction():
         θ = λ / a
 
         print("θ ≈ λ / a")
-        print(f"Le demi-angle de diffraction est de : {θ:.2e} rad")
+        print(f"\nLe demi-angle de diffraction est de : {θ:.2e} rad\n")
 
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
@@ -662,7 +736,7 @@ def tache_centrale():
 
         print("\nRésultat :")
         print("L = 2 * λ * D / a")
-        print(f"La largeur de la tache centrale est de : {L:.2e} m")
+        print(f"\nLa largeur de la tache centrale est de : {L:.2e} m\n")
 
     except ValueError:
         print("Erreur : Veuillez entrer des nombres valides.")
