@@ -31,7 +31,8 @@ Vous devez avoir **Python 3.x** installé sur votre système.
 Assurez-vous d'avoir les librairies suivantes installées :
 
 ```bash
-pip install pyfiglet colorama
+pip install colorama pyfiglet mendeleev
+
 ```
 
 ## Utilisation
