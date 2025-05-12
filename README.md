@@ -27,7 +27,7 @@ Les fonctions manquantes :
   
 ## Prérequis
 
-Vous devez avoir **Python 3.x** installé sur votre système.  
+Vous devez avoir **Python 3.10** installé sur votre système.  
 Assurez-vous d'avoir les librairies suivantes installées :
 
 ```bash
